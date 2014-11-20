@@ -35,12 +35,12 @@ MongoInsert($Query1);
  <h3>Query1</h3> <br />
  ';
 echo $Query1;
-echo'
+?>
 <br />
 <button type="button" id="CustInsert" name="CustInsert">Customer Insert</button>
   <script>
     $("#CustInsert").click(function() {
-	  var Query1 = '.$Query1.';     
+	  var Query1 = <?php echo $Query1 ?>;  	  
       $.ajax({
 	  type: "POST",
 	  traditional: true,
@@ -56,6 +56,3 @@ echo'
   </script>
  </body>
  </html> 
- '; //end php echo
-
- ?>
