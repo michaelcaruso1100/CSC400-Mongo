@@ -16,7 +16,10 @@
 	"contactNum" :"123456790",
 	"contactEmail" :"mikep@gmail.com"
 }';
- $Query2 = "";
+ $Query2 = '{
+		"email" : "mikep@gmail.com",
+		"password" : "password"
+		}';
  $Query3 = "";
  $Query4 = "";
 /*
@@ -52,6 +55,22 @@ echo $Query1;
      }).done(function(){
 		alert("Data Saved");
 	 });
+});
+  </script>
+ <br />
+ <?php echo $Query2 ?>
+ <button type="button" id="CustLogin" name="CustLogin">Login</button>
+  <script>
+    $("#CustLogin").click(function() {
+	  var Query2 = JSON.stringify(<?php echo $Query2 ?>);	  
+      $.ajax({
+	  type: "POST",
+      url: "CustomerLogin.php",
+      data: {'Query2':Query2},
+	  success: function(data){
+            alert("Your ID is:" + data);
+        }
+     });
 });
   </script>
  </body>

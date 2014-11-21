@@ -9,7 +9,24 @@ function MongoInsert($query){
 			echo "Cant insert twice";
 		}
 };
-	
+
+function MongoLogin($query) {
+		require 'MongoDBConn.php';
+		
+		$param = json_decode($query);
+		$cursor = $collection->find($param);
+		$return = array();
+		$i=0;
+	    while ($cursor->hasNext())
+		{
+		$userID = $cursor->getNext();
+		$return[$i++] = $userID['userID'];
+	    }
+		echo json_encode($return);
+		
+		
+		
+};	
 function MongoRFPInsert($Id,$query){
 		require 'MongoDBConn.php';
 		$collection->update(
