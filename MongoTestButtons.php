@@ -1,4 +1,4 @@
- <?php
+ <?php 
  $Query1 = '{
 	"userID" : "1000",   
 	"type" : "scsu",  
@@ -39,13 +39,13 @@ echo $Query1;
 <br />
 <button type="button" id="CustInsert" name="CustInsert">Customer Insert</button>
   <script>
+ 
     $("#CustInsert").click(function() {
-	  var Query1 = <?php echo $Query1 ?>;  	  
+	  var Query1 = JSON.stringify(<?php echo $Query1 ?>);	  
       $.ajax({
 	  type: "POST",
-	  traditional: true,
       url: "CustomerInsert.php",
-      data: Query1,
+      data: {'Query1':Query1},
 	  success: function(data){
             console.log(data);
         }
