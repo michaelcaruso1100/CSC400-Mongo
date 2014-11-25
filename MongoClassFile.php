@@ -61,4 +61,15 @@ function MongoResponseInsert($Id,$RfpNum,$query){
 	
 };
 
+function getNextId($name)
+{
+global $db;
+$count = $db -> selectCollection('Counter');
+   $ret = $count -> findandmodify(
+        array("_id" => $name),
+		array('$inc' =>array('seq' =>1))
+		);
+		return $ret['seq'];
+		};   
+
 ?>
